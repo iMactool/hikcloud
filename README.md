@@ -31,7 +31,7 @@ $ composer require imactool/hikcloud -vvv
             'provinceCode' =>'130002',
             'addressDetail' =>'玉兰大道与黄山路交叉口192号'
 	];
-    $res = $hik->Communit->communities($params);
+    $res = $hikCloud->Communit->communities($params);
     var_dump($res);
 ```
 
