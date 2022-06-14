@@ -1,0 +1,20 @@
+{
+    "name": "imactool\/hikcloud",
+    "description": "企业内部应用开发-社区",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "weslee",
+            "email": "chinauser1208@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Imactool\\Hikcloud\\": "src"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.5",
+        "symfony/cache": "^4.4"
+    }
+}
