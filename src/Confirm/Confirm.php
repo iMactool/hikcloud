@@ -14,6 +14,13 @@
 
     class Confirm extends BaseService
 	{
+        /**
+         * 自动确权
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
         public function autoconfirm(array $params)
         {
             return $this->getJson('v1/carrier/wing/endpoint/confirm/right/autoconfirm',$params);

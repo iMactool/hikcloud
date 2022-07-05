@@ -188,6 +188,14 @@
             return $this->post($endpoint,$params);
         }
 
+        /**
+         * 关闭设备视频加密
+         * @param array $params
+         *
+         * @return mixed
+         * @throws \Imactool\Hikcloud\Exceptions\InvalidArgumentException
+         * @author cc
+         */
         public function offDeviceVoideEncrypt(array $params)
         {
             if (!\array_key_exists('deviceId',$params)){
@@ -197,14 +205,30 @@
             return $this->post($endpoint,$params);
         }
 
+        /**
+         * 开通标准流预览功能
+         * @param $channelIds
+         *
+         * @return mixed
+         * @author cc
+         */
         public function liveVideoOpen($channelIds)
         {
             return $this->post('v1/devices/liveVideoOpen',['channelIds'=>$channelIds]);
         }
 
-        public function liveAddress($channelIds)
+        /**
+         * 获取标准流预览地址
+         * 该接口获取的标准流预览地址适用于公众号、公共标准流预览等场景，特点是视频信息公开。
+         * @param $channelId
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function liveAddress($channelId)
         {
-            return $this->post('v1/devices/liveAddress',['channelIds'=>$channelIds]);
+            $endpoint = "/v1/devices/liveAddress?channelId=".trim($channelId);
+            return $this->get($endpoint ,['channelId'=>$channelId]);
         }
 
         public function liveAddressLimit(array $params)
@@ -212,6 +236,11 @@
             return $this->post('v1/devices/liveAddressLimit',$params);
         }
 
+        /**
+         * 获取视频取流时需要的认证信息
+         * @return mixed
+         * @author cc
+         */
         public function getEzvizInfo()
         {
             return $this->get('v1/ezviz/account/info');
