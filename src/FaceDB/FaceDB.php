@@ -16,22 +16,22 @@
 	{
         public function faceList(array $params)
         {
-            return $this->getJson('api/v1/estate/device/faceDatabase/actions/list',$params);
+            return $this->getJson('/api/v1/estate/device/faceDatabase/actions/list',$params);
         }
 
         public function ddFace(array $params)
         {
-            return $this->postJosn('api/v1/estate/device/faceDatabase/actions/addFace',$params);
+            return $this->postJosn('/api/v1/estate/device/faceDatabase/actions/addFace',$params);
         }
 
         public function delFaces($faceids)
         {
-            return $this->postJosn('api/v1/estate/device/faceDatabase/actions/delFaces',['faceIds'=>$faceids]);
+            return $this->postJosn('/api/v1/estate/device/faceDatabase/actions/delFaces',['faceIds'=>$faceids]);
         }
 
         public function syncFaceDatabase(string $faceDatabaseId)
         {
-            return $this->getJson('api/v1/estate/device/faceDatabase/actions/syncFaceDatabase',['faceDatabaseId'=>$faceDatabaseId]);
+            return $this->getJson('/api/v1/estate/device/faceDatabase/actions/syncFaceDatabase',['faceDatabaseId'=>$faceDatabaseId]);
         }
 
         /**
@@ -49,12 +49,12 @@
          */
         public function addVisitor(array $params)
         {
-            return $this->postJosn('api/v1/estate/visitors',$params);
+            return $this->postJosn('/api/v1/estate/visitors',$params);
         }
 
         public function deleteVisitor(string $reservationId)
         {
-            $endpoint = "api/v1/estate/visitors/{$reservationId}";
+            $endpoint = "/api/v1/estate/visitors/{$reservationId}";
             return $this->deleteJson($endpoint,['reservationId'=>$reservationId]);
         }
 

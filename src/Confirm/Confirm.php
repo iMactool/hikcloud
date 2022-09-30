@@ -23,17 +23,17 @@
          */
         public function autoconfirm(array $params)
         {
-            return $this->getJson('v1/carrier/wing/endpoint/confirm/right/autoconfirm',$params);
+            return $this->getJson('/v1/carrier/wing/endpoint/confirm/right/autoconfirm',$params);
         }
 
         public function offlineconfirm(string $deviceSerial)
         {
-            return $this->getJson('v1/carrier/wing/endpoint/confirm/right/offlineconfirm',['deviceSerial'=>$deviceSerial]);
+            return $this->getJson('/v1/carrier/wing/endpoint/confirm/right/offlineconfirm',['deviceSerial'=>$deviceSerial]);
         }
 
         public function onlineconfirm(string $deviceSerial)
         {
-            return $this->getJson('v1/carrier/wing/endpoint/confirm/right/onlineconfirm',['deviceSerial'=>$deviceSerial]);
+            return $this->getJson('/v1/carrier/wing/endpoint/confirm/right/onlineconfirm',['deviceSerial'=>$deviceSerial]);
         }
 
 	}

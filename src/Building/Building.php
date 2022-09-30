@@ -25,7 +25,7 @@
          */
         public function addBuilding(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/buildings',$params);
+            return $this->postJosn('/api/v1/estate/system/buildings',$params);
         }
 
         /**
@@ -38,7 +38,7 @@
          */
         public function deleteBuilding($buildingId)
         {
-            $endpoint = 'api/v1/estate/system/buildings/'.$buildingId;
+            $endpoint = '/api/v1/estate/system/buildings/'.$buildingId;
             return $this->deleteJson($endpoint,['buildingId'=>$buildingId]);
         }
 
@@ -52,7 +52,7 @@
          */
         public function addUnit(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/units',$params);
+            return $this->postJosn('/api/v1/estate/system/units',$params);
         }
 
         /**
@@ -65,7 +65,7 @@
          */
         public function deleteUnit($unitId)
         {
-            $endpoint = 'api/v1/estate/system/units/'.$unitId;
+            $endpoint = '/api/v1/estate/system/units/'.$unitId;
             return $this->deleteJson($endpoint,['unitId'=>$unitId]);
         }
 
@@ -79,7 +79,7 @@
          */
         public function addRoom(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/rooms',$params);
+            return $this->postJosn('/api/v1/estate/system/rooms',$params);
         }
 
         /**
@@ -91,7 +91,7 @@
          */
         public function deleteRoom($roomId)
         {
-            $endpoint = 'api/v1/estate/system/rooms/'.$roomId;
+            $endpoint = '/api/v1/estate/system/rooms/'.$roomId;
             return $this->deleteJson($endpoint,['roomId'=>$roomId]);
         }
 
@@ -105,7 +105,7 @@
          */
         public function getRoomByNumber(array $params)
         {
-            return $this->getJson('api/v1/estate/system/rooms/actions/info',$params);
+            return $this->getJson('/api/v1/estate/system/rooms/actions/info',$params);
         }
 
         /**
@@ -117,7 +117,7 @@
          */
         public function getRoomById($roomId)
         {
-            return $this->getJson('api/v1/estate/system/rooms/actions/infoById',['roomId'=>$roomId]);
+            return $this->getJson('/api/v1/estate/system/rooms/actions/infoById',['roomId'=>$roomId]);
         }
 
         /**
@@ -129,7 +129,7 @@
          */
         public function getRoomList(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/rooms/actions/communityRoomList',$params);
+            return $this->postJosn('/api/v1/estate/system/rooms/actions/communityRoomList',$params);
         }
 
         /**
@@ -141,7 +141,7 @@
          */
         public function getBuildingList(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/buildings/actions/communityBuildingList',$params);
+            return $this->postJosn('/api/v1/estate/system/buildings/actions/communityBuildingList',$params);
         }
 
         /**
@@ -153,7 +153,7 @@
          */
         public function getUnitList(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/units/actions/buildingUnitList',$params);
+            return $this->postJosn('/api/v1/estate/system/units/actions/buildingUnitList',$params);
         }
 
         /**
@@ -165,7 +165,7 @@
          */
         public function getUnitRoomList(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/rooms/actions/unitRoomList',$params);
+            return $this->postJosn('/api/v1/estate/system/rooms/actions/unitRoomList',$params);
         }
 
     }

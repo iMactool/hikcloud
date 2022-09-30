@@ -42,7 +42,7 @@
 //                'Authorization'=>'Bearer e4d31bc1-ac63-4791-9f74-ccc784a592b7'
 //            ];
 
-            $result = $this->postJosn('api/v1/estate/system/communities',$params);
+            $result = $this->postJosn('/api/v1/estate/system/communities',$params);
 //            $result = $this->httpClient()->request('post', 'api/v1/estate/system/communities', $options);
 
             return $result;
@@ -64,7 +64,7 @@
                 throw new \Imactool\Hikcloud\Exceptions\InvalidArgumentException("缺少必要参数");
             }
             $params = ['communityId'=>$communityId];
-            $result = $this->deleteJson('api/v1/estate/system/communities/'.$communityId,$params);
+            $result = $this->deleteJson('/api/v1/estate/system/communities/'.$communityId,$params);
             return $result;
         }
 
@@ -92,7 +92,7 @@
                 throw new \Imactool\Hikcloud\Exceptions\InvalidArgumentException("缺少必要参数 addressDetail");
             }
 
-            $result = $this->postJosn('api/v1/estate/system/communities/actions/updateCommunity',$params);
+            $result = $this->postJosn('/api/v1/estate/system/communities/actions/updateCommunity',$params);
 
             return $result;
         }
@@ -114,7 +114,7 @@
                 throw new \Imactool\Hikcloud\Exceptions\InvalidArgumentException("缺少必要参数 pageSize");
             }
 
-            $endpoint = "api/v1/estate/system/communities/actions/list?pageNo={$params['pageNo']}&pageSize={$params['pageSize']}";
+            $endpoint = "/api/v1/estate/system/communities/actions/list?pageNo={$params['pageNo']}&pageSize={$params['pageSize']}";
             $result = $this->getJson($endpoint,$params);
 
             return $result;

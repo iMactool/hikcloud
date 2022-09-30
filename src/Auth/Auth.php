@@ -40,7 +40,7 @@ class Auth extends BaseService
         ];
 
         try {
-            $result = $this->httpClient()->request('post', 'oauth/token', $options);
+            $result = $this->httpClient()->request('post', '/oauth/token', $options);
         }catch (Exception $exception){
             $message = $exception->getMessage();
             if ($exception instanceof InvalidArgumentException){
@@ -68,7 +68,7 @@ class Auth extends BaseService
         }
 
         $ns     = strtoupper(self::randString(32));
-        list($msec ,$sec) = explode(' ',microtime());
+        [$msec ,$sec] = explode(' ',microtime());
         $ts     =  (float) sprintf('%.0f',(floatval($msec) + floatval($sec)) * 1000);
         $secret = $params['secret'];
         $params['ns']           = $ns;
@@ -102,5 +102,15 @@ class Auth extends BaseService
             $result .= $chars[rand(0, $max)];
         }
         return $result;
+    }
+
+
+    public function ysAccessToken()
+    {
+       $params = [
+           'appKey' => self::getYsConfig('appKey'),
+           'appSecret' => self::getYsConfig('appSecret'),
+       ];
+        return $this->post('/api/lapp/token/get',$params);
     }
 }

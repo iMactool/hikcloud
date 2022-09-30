@@ -16,11 +16,11 @@
 	{
         public function publishProgram(array $params)
         {
-            return $this->postJosn('api/v1/estate/publish/actions/publishProgram',$params);
+            return $this->postJosn('/api/v1/estate/publish/actions/publishProgram',$params);
         }
 
         public function deleteProgram($deviceIds)
         {
-            return $this->postJosn('api/v1/estate/publish/actions/deleteProgram',['deviceIds'=>$deviceIds]);
+            return $this->postJosn('/api/v1/estate/publish/actions/deleteProgram',['deviceIds'=>$deviceIds]);
         }
 	}

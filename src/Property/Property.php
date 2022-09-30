@@ -23,7 +23,7 @@
          */
         public function addProperty(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/property',$params);
+            return $this->postJosn('/api/v1/estate/system/property',$params);
         }
 
         /**
@@ -35,7 +35,7 @@
          */
         public function updateProperty(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/property/actions/updateProperty',$params);
+            return $this->postJosn('/api/v1/estate/system/property/actions/updateProperty',$params);
         }
 
         /**
@@ -47,7 +47,7 @@
          */
         public function deleteProperty(string $personId)
         {
-            $endpoint = 'api/v1/estate/system/property/'.$personId;
+            $endpoint = '/api/v1/estate/system/property/'.$personId;
             return $this->deleteJson($endpoint,['personId'=>$personId]);
         }
 

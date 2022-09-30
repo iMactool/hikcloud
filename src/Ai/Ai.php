@@ -16,27 +16,27 @@
 	{
         public function getModels(array $params)
         {
-            return $this->getJson('api/v1/ai/intelligence/models',$params);
+            return $this->getJson('/api/v1/ai/intelligence/models',$params);
         }
 
         public function trainVersions(array $params)
         {
-            return $this->getJson('api/v1/ai/intelligence/models/trainVersions',$params);
+            return $this->getJson('/api/v1/ai/intelligence/models/trainVersions',$params);
         }
 
         public function analysis(array $params)
         {
-            return $this->postJosn('api/v1/ai/intelligence/models/trainVersions/actions/analysi',$params);
+            return $this->postJosn('/api/v1/ai/intelligence/models/trainVersions/actions/analysi',$params);
         }
 
         public function trainVersionInfo($versionid)
         {
-            $endpoint = 'api/v1/ai/intelligence/models/trainVersions/'.$versionid;
+            $endpoint = '/api/v1/ai/intelligence/models/trainVersions/'.$versionid;
             return $this->getJson($endpoint,['versionId'=>$versionid]);
         }
 
         public function feedbackByTraceId($traceId)
         {
-            return $this->postJosn('api/v1/ai/intelligence/actions/feedbackByTraceId',['traceId'=>$traceId]);
+            return $this->postJosn('/api/v1/ai/intelligence/actions/feedbackByTraceId',['traceId'=>$traceId]);
         }
 	}

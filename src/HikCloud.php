@@ -4,7 +4,7 @@
 	 * Author: cc
 	 * Created by PhpStorm.
 	 * Copyright (c)  cc Inc. All rights reserved.
-	 * Desc: 代码功能描述
+	 * Desc: 海康云牟
 	 *  ======================================================
 	 */
 

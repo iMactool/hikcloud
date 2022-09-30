@@ -26,7 +26,7 @@
          */
         public function addPerson(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person',$params);
+            return $this->postJosn('/api/v1/estate/system/person',$params);
         }
 
         /**
@@ -38,7 +38,7 @@
          */
         public function deletePerson(string $personId)
         {
-            $endpoint = 'api/v1/estate/system/person/'.$personId;
+            $endpoint = '/api/v1/estate/system/person/'.$personId;
             return $this->deleteJson($endpoint,['personId'=>$personId]);
         }
 
@@ -51,7 +51,7 @@
          */
         public function updatePerson(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/updatePerson',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/updatePerson',$params);
         }
 
         /**
@@ -63,7 +63,7 @@
          */
         public function addCommunityRelation(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/addCommunityRelation',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/addCommunityRelation',$params);
         }
 
         /**
@@ -76,7 +76,7 @@
          */
         public function deleteCommunityRelation(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/deleteCommunityRelation',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/deleteCommunityRelation',$params);
         }
 
         /**
@@ -88,7 +88,7 @@
          */
         public function addRoomRelation(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/addRoomRelation',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/addRoomRelation',$params);
         }
 
         /**
@@ -100,7 +100,7 @@
          */
         public function deleteRoomRelation(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/deleteRoomRelation',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/deleteRoomRelation',$params);
         }
 
         /**
@@ -112,7 +112,7 @@
          */
         public function setRoomRelation(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/setRoomRelation',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/setRoomRelation',$params);
         }
 
         /**
@@ -122,7 +122,7 @@
          */
         public function roomList(array $params)
         {
-            return $this->getJson('api/v1/estate/system/person/actions/roomList',$params);
+            return $this->getJson('/api/v1/estate/system/person/actions/roomList',$params);
         }
 
         /**
@@ -134,7 +134,7 @@
          */
         public function personInfoList(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/personInfoList',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/personInfoList',$params);
         }
 
         /**
@@ -146,7 +146,7 @@
          */
         public function labelList(array $params)
         {
-            return $this->getJson('api/v1/estate/system/person/actions/labelList',$params);
+            return $this->getJson('/api/v1/estate/system/person/actions/labelList',$params);
         }
 
         /**
@@ -158,7 +158,122 @@
          */
         public function addLabelAndLicenseRelation(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/person/actions/addLabelAndLicenseRelation',$params);
+            return $this->postJosn('/api/v1/estate/system/person/actions/addLabelAndLicenseRelation',$params);
         }
 
+        /**
+         * ------------------------------------------------------------
+         * ------------------------------------------------------------
+         * 以下是
+         * 综合安防管理平台（iSecure Center） 人员信息接口集合
+         * ------------------------------------------------------------
+         */
+
+        /**
+         * 管理接口
+         * 批量开卡
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscCardBind(array $params)
+        {
+            return $this->iscPostJson('/api/cis/v1/card/bindings',$params);
+        }
+
+        /**
+         * 卡片退卡
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscDeleteCard(array $params)
+        {
+            return $this->iscPostJson('/api/cis/v1/card/deletion',$params);
+        }
+
+        /**
+         * 用于卡片批量挂失，批量挂失数量不能超过200个。
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscBatchLoseCard(array $params)
+        {
+            return $this->iscPostJson('/api/cis/v1/card/batch/loss',$params);
+        }
+
+        /**
+         * 用于卡片批量解挂，批量解挂数量不能超过200个
+         * @param array $params
+         * @author cc
+         */
+        public function iscBatchUnlossCard(array $params)
+        {
+            return $this->iscPostJson('/api/cis/v1/card/batch/unLoss',$params);
+        }
+
+        /**
+         * 用于生产卡片二维码，二维码默认有效期为24*60分钟，默认最大开锁次数4次.
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscGenerateCardQrCode(array $params)
+        {
+            return $this->iscPostJson('/api/cis/v1/card/barCode',$params);
+        }
+
+        /**
+         *  获取卡片列表接口可用来全量同步卡片信息，返回结果分页展示，不作权限过滤。
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscGetCardList(array $params)
+        {
+          return $this->iscPostJson('/api/resource/v1/card/cardList',$params);
+        }
+
+        /**
+         * 获取卡片列表接口可用来全量同步卡片信息，返回结果分页展示，不作权限过滤。
+         * 注：卡号为精确查找
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscGetCardInfo(array $params = [])
+        {
+            return $this->iscPostJson('/api/irds/v1/card/cardInfo',$params);
+        }
+
+        /**
+         * 查询卡片列表
+         * @param array|int[] $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscSearchCardList(array $params = ['pageNo'=>1,'pageSize'=>100])
+        {
+            return $this->iscPostJson('/api/irds/v1/card/advance/cardList',$params);
+        }
+
+        /**
+         * 根据查询条件查询卡片列表信息，主要根据时间段分页获取卡片信息，包含已删除数据。其中开始日期与结束日期的时间差必须在48小时内。
+         * @param array $params
+         *
+         * @return mixed
+         * @author cc
+         */
+        public function iscGetCardTimeRange(array $params)
+        {
+            return $this->iscPostJson('/api/resource/v1/card/timeRange',$params);
+        }
     }

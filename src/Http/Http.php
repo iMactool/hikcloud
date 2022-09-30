@@ -13,14 +13,12 @@ use GuzzleHttp\Client;
 class Http
 {
     protected $guzzleOptions = [];
-    protected $baseUri = 'https://api2.hik-cloud.com/'; //正式环境
+    protected $baseUri = 'https://api2.hik-cloud.com'; //正式环境
+
 
     protected function getHttpClient()
     {
-        if (!isset($this->guzzleOptions['base_uri'])) {
-            $this->guzzleOptions['base_uri'] = $this->baseUri;
-        }
-
+        $this->guzzleOptions['base_uri'] = $this->baseUri;
         return new Client($this->guzzleOptions);
     }
 

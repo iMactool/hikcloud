@@ -22,7 +22,7 @@
          */
         public function addCard(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/cards',$params);
+            return $this->postJosn('/api/v1/estate/system/cards',$params);
         }
 
         /**
@@ -34,7 +34,7 @@
          */
         public function deleteCard(string $cardId)
         {
-            $endpoint = 'api/v1/estate/system/cards/'.$cardId;
+            $endpoint = '/api/v1/estate/system/cards/'.$cardId;
             return $this->deleteJson($endpoint,['cardId'=>$cardId]);
         }
 
@@ -47,32 +47,32 @@
          */
         public function openCard(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/cards/actions/openCard',$params);
+            return $this->postJosn('/api/v1/estate/system/cards/actions/openCard',$params);
         }
 
         public function refundCard(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/cards/actions/refundCard',$params);
+            return $this->postJosn('/api/v1/estate/system/cards/actions/refundCard',$params);
         }
 
         public function changeCard(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/cards/actions/changeCard',$params);
+            return $this->postJosn('/api/v1/estate/system/cards/actions/changeCard',$params);
         }
 
         public function lossCard($cardId)
         {
-            return $this->postJosn('api/v1/estate/system/cards/actions/lossCard',['cardId'=>$cardId]);
+            return $this->postJosn('/api/v1/estate/system/cards/actions/lossCard',['cardId'=>$cardId]);
         }
 
         public function cancelLossCard(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/cards/actions/cancelLossCard',$params);
+            return $this->postJosn('/api/v1/estate/system/cards/actions/cancelLossCard',$params);
         }
 
         public function reissueCard(array $params)
         {
-            return $this->postJosn('api/v1/estate/system/cards/actions/reissueCard',$params);
+            return $this->postJosn('/api/v1/estate/system/cards/actions/reissueCard',$params);
         }
 
     }
