@@ -13,6 +13,21 @@
 	use Imactool\Hikcloud\Core\Container;
     use Imactool\Hikcloud\Interfaces\Provider;
 
+    /**
+     * Class CardProvider
+     *
+     * @method addCard(array $params)
+     * @method deleteCard(string $cardId)
+     * @method openCard(array $params)
+     * @method refundCard(array $params)
+     * @method changeCard(array $params)
+     * @method lossCard($cardId)
+     * @method cancelLossCard(array $params)
+     * @method reissueCard(array $params)
+     *
+     * @package Imactool\Hikcloud\Card
+     * @version 1.0.0
+     */
     class CardProvider implements Provider
 	{
         public function serviceProvider (Container $container)

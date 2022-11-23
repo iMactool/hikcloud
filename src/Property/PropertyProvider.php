@@ -13,6 +13,16 @@
 	use Imactool\Hikcloud\Core\Container;
     use Imactool\Hikcloud\Interfaces\Provider;
 
+    /**
+     * Class PropertyProvider
+     *
+     * @method addProperty(array $params)
+     * @method updateProperty(array $params)
+     * @method deleteProperty(string $personId)
+     *
+     * @package Imactool\Hikcloud\Property
+     * @version 1.0.0
+     */
     class PropertyProvider implements Provider
 	{
         public function serviceProvider (Container $container)

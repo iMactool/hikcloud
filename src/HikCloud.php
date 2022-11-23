@@ -25,6 +25,25 @@
     use Imactool\Hikcloud\Person\PersonProvider;
     use Imactool\Hikcloud\Property\PropertyProvider;
 
+    /**
+     * Class HikCloud
+     *
+     * @property AuthProvider       $Auth
+     * @property CommunitProvider   $Communit
+     * @property BuildingProvider   $Building
+     * @property PersonProvider     $Person
+     * @property PropertyProvider   $Property
+     * @property CardProvider       $Card
+     * @property DeviceProvider     $Device
+     * @property ConfirmProvider    $Confirm
+     * @property AdProvider         $Ad
+     * @property FaceDBProvider     $FaceDB
+     * @property MsgProvider        $Msg
+     * @property AiProvider         $Ai
+     *
+     * @package Imactool\Hikcloud
+     * @version 1.0.0
+     */
     class HikCloud extends ContainerBase
 	{
 

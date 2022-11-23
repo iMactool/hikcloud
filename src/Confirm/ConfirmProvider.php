@@ -13,6 +13,16 @@
 	use Imactool\Hikcloud\Core\Container;
     use Imactool\Hikcloud\Interfaces\Provider;
 
+    /**
+     * Class ConfirmProvider
+     *
+     * @method autoconfirm(array $params)
+     * @method offlineconfirm(string $deviceSerial)
+     * @method onlineconfirm(string $deviceSerial)
+     *
+     * @package Imactool\Hikcloud\Confirm
+     * @version 1.0.0
+     */
     class ConfirmProvider implements Provider
 	{
         public function serviceProvider (Container $container)

@@ -13,6 +13,15 @@
 	use Imactool\Hikcloud\Core\Container;
     use Imactool\Hikcloud\Interfaces\Provider;
 
+    /**
+     * Class AdProvider
+     *
+     * @method publishProgram(array $params)
+     * @method deleteProgram($deviceIds)
+     *
+     * @package Imactool\Hikcloud\Ad
+     * @version 1.0.0
+     */
     class AdProvider implements Provider
 	{
         public function serviceProvider (Container $container)
