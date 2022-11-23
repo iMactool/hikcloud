@@ -21,6 +21,20 @@
     use Imactool\Hikcloud\Setting\SettingProvider;
     use Imactool\Hikcloud\Voice\VoiceProvider;
 
+    /**
+     * Class Ys7
+     *
+     * @property AuthProvider     $Auth
+     * @property DeviceProvider   $Device
+     * @property LiveProvider     $Live
+     * @property SettingProvider  $Setting
+     * @property VoiceProvider    $Voice
+     * @property MsgProvider      $Msg
+     * @property PtzProvider      $Ptz
+     *
+     * @package Imactool\Hikcloud
+     * @version 1.0.0
+     */
     class Ys7 extends ContainerBase
 	{
         private static $config;

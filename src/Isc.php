@@ -19,6 +19,17 @@
     use Imactool\Hikcloud\Person\PersonProvider;
     use Imactool\Hikcloud\Resource\ResourceProvider;
 
+    /**
+     * Class Isc
+     *
+     * @property ResourceProvider $Resource
+     * @property PersonProvider   $Person
+     * @property OrgProvider      $Org
+     * @property EventProvider    $Event
+     *
+     * @package Imactool\Hikcloud
+     * @version 1.0.0
+     */
     class Isc extends ContainerBase
 	{
         private static $config;
