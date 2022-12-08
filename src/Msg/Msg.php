@@ -14,9 +14,10 @@
 
     class Msg extends BaseService
 	{
-        public function createCustomer()
+        public function createCustomer(string $name = 'group1')
         {
-            return $this->postJosn('/api/v1/mq/consumer/group1');
+            $params = ['consumerName'=>$name];
+            return $this->postJosn('/api/v1/mq/consumer/group1',$params);
         }
 
         public function getCustomer(array $params)

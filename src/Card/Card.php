@@ -75,4 +75,12 @@
             return $this->postJosn('/api/v1/estate/system/cards/actions/reissueCard',$params);
         }
 
+        /**
+         * 查卡
+         */
+        public function getCards(array $params)
+        {
+            return $this->postJosn('/api/v1/estate/system/cards/actions/getCards',$params);
+        }
+
     }

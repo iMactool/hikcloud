@@ -185,7 +185,7 @@ trait Client
         return $this->httpClient()->request('get', $endpoint, [
             'headers' => $header,
             'multipart'=>$multipart,
-            'debug' => true
+//            'debug' => true
         ]);
 
 
@@ -230,7 +230,7 @@ trait Client
         return $this->httpClient()->request('post', $endpoint, [
             'headers' => $header,
             'multipart' => $multipart,
-            'debug'=>true
+//            'debug'=>true
         ]);
     }
 
@@ -254,7 +254,7 @@ trait Client
          return   $this->httpClient()->request('PUT', $endpoint, [
                 'headers'   => $headers,
                 'multipart' => $multipart,
-                'debug'     => true
+//                'debug'     => true
             ]);
 //        }catch (BadResponseException $e){
 //            return $e->getMessage();
@@ -286,7 +286,7 @@ trait Client
             'headers' => $header,
             'form_params' => $params,
             'verify'      => false,
-            'debug'=>true
+//            'debug'=>true
         ]);
     }
 
@@ -298,7 +298,7 @@ trait Client
             'headers'       => $headers,
             'body'          => \json_encode($params),
             'verify'        => false,
-            'debug'         => true
+//            'debug'         => true
         ]);
     }
 
