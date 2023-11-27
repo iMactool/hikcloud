@@ -22,7 +22,7 @@ trait AuthService
      */
     public function getAccessToken($cacheKey)
     {
-        $accessToken = CacheAdapter::getInstance()->getItem($cacheKey);
+        $accessToken = self::getInstance()->getItem($cacheKey);
 
         if (!$accessToken->isHit()) {
             $result = $this->refreshSelfAccessToken();
@@ -30,7 +30,7 @@ trait AuthService
                 $this->access_token = $result['access_token'];
                 $accessToken->set($this->access_token);
                 $accessToken->expiresAfter((int) $result['expires_in'] - 3);
-                CacheAdapter::getInstance()->save($accessToken);
+                self::getInstance()->save($accessToken);
             }
         } else {
             $this->access_token = $accessToken->get();
@@ -41,7 +41,7 @@ trait AuthService
 
     public function getYsAccessToken($cacheKey)
     {
-        $accessToken = CacheAdapter::getInstance()->getItem($cacheKey);
+        $accessToken = self::getInstance()->getItem($cacheKey);
 
         if (!$accessToken->isHit()){
             $result = $this->refreshYsAccessToken();
@@ -54,7 +54,7 @@ trait AuthService
             $this->ys_access_token = $result['data']['accessToken'];
             $accessToken->set($this->ys_access_token);
             $accessToken->expiresAfter((int) $result['data']['expireTime'] - 3);
-            CacheAdapter::getInstance()->save($accessToken);
+            self::getInstance()->save($accessToken);
         }else{
             $this->ys_access_token = $accessToken->get();
         }

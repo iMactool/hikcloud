@@ -14,7 +14,7 @@
 
     use Imactool\Hikcloud\Core\ContainerBase;
     use Imactool\Hikcloud\Event\EventProvider;
-    use Imactool\Hikcloud\Http\Client;
+    use Imactool\Hikcloud\Http\ClientHttp;
     use Imactool\Hikcloud\Org\OrgProvider;
     use Imactool\Hikcloud\Person\PersonProvider;
     use Imactool\Hikcloud\Resource\ResourceProvider;
@@ -32,6 +32,7 @@
      */
     class Isc extends ContainerBase
 	{
+        use ClientHttp;
         private static $config;
 
         protected $provider = [
@@ -44,7 +45,7 @@
         public function __construct (array $config)
         {
             self::$config = $config;
-            Client::setAppConfig('isConfig',$config);
+            ClientHttp::setAppConfig('isConfig',$config);
             parent::__construct();
         }
 

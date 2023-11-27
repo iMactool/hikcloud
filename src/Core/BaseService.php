@@ -8,11 +8,11 @@
 
 namespace Imactool\Hikcloud\Core;
 
-use Imactool\Hikcloud\Http\Client;
+use Imactool\Hikcloud\Http\ClientHttp;
 
 class BaseService
 {
-    use Client;
+    use ClientHttp;
 
     protected   $app;
     public      $nowApp;
@@ -31,7 +31,7 @@ class BaseService
         $this->nowApp = basename(str_replace('\\','/',$class));
 
         if ($this->nowApp == "HikCloud"){
-            $this->appRunConfig = self::getAppConfig();
+            $this->appRunConfig = self::getHikConfig();
             $this->baseUri = 'https://api2.hik-cloud.com';
         }else if($this->nowApp == "Isc"){
             $this->appRunConfig = self::getIsConfig();

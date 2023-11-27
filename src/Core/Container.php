@@ -32,6 +32,7 @@ class Container implements \ArrayAccess
      */
     public $register;
 
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         // TODO: Implement offsetExists() method.
@@ -42,6 +43,7 @@ class Container implements \ArrayAccess
      *
      * @return $this|mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if (isset($this->instances[$offset])) {
@@ -59,11 +61,13 @@ class Container implements \ArrayAccess
      * @param mixed $offset
      * @param mixed $value
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->values[$offset] = $value;
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         // TODO: Implement offsetUnset() method.

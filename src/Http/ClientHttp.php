@@ -14,7 +14,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Utils;
 use Imactool\Hikcloud\Exceptions\Exception;
 
-trait Client
+trait ClientHttp
 {
     use AuthService;
 
@@ -27,17 +27,21 @@ trait Client
     public function httpClient()
     {
 
-        if (!self::$client) {
-            self::$client = new Http();
-            self::$client->setUrl($this->baseUri);
+        if (!static::$client) {
+            static::$client = new Http();
+            static::$client->setUrl($this->baseUri);
         }
 
-        return self::$client;
+        return static::$client;
     }
 
-    public static function setAppConfig($key, $appConfig)
+    public static function setAppConfig($cachePrefix ,$appConfig)
     {
-        self::$appConfig[$key] = $appConfig;
+        $config = self::getInstance()->getItem($cachePrefix);
+        if (!$config->isHit()){
+            $config->set($appConfig);
+            self::getInstance()->save($config);
+        }
     }
 
     /**
@@ -47,19 +51,14 @@ trait Client
      * @return mixed
      * @author cc
      */
-    public static function getAppConfig($key = null)
+    public static function getHikConfig($key = null)
     {
+        $config = self::getInstance()->getItem('hikconfig');
+        $nowConfig = $config->get();
         if (is_null($key)) {
-            return self::$appConfig['config'];
+            return $nowConfig;
         }
-
-        return self::$appConfig['config'][$key];
-    }
-
-
-    public static function getAllConfig()
-    {
-        return self::$appConfig;
+        return $nowConfig[$key];
     }
 
     /**
@@ -71,11 +70,12 @@ trait Client
      */
     public static function getYsConfig($key = null)
     {
+        $config = self::getInstance()->getItem('ysconfig');
+        $nowConfig = $config->get();
         if (is_null($key)) {
-            return self::$appConfig['ysconfig'];
+            return $nowConfig;
         }
-
-        return self::$appConfig['ysconfig'][$key];
+        return $nowConfig[$key];
     }
 
     /**
@@ -87,11 +87,12 @@ trait Client
      */
     public static function getIsConfig($key = null)
     {
+        $config = self::getInstance()->getItem('isConfig');
+        $nowConfig = $config->get();
         if (is_null($key)) {
-            return self::$appConfig['isConfig'];
+            return $nowConfig;
         }
-
-        return self::$appConfig['isConfig'][$key];
+        return $nowConfig[$key];
     }
 
     /**
@@ -399,7 +400,7 @@ trait Client
      */
     public function authorizerTokenKey()
     {
-        return $this->access_token_key . self::getAppConfig('client_id');
+        return $this->access_token_key . static::getHikConfig('client_id');
     }
 
     /**
@@ -409,14 +410,14 @@ trait Client
      */
     public function authorizerYsTokenKey()
     {
-        return $this->access_token_ys_key . self::getYsConfig('appKey');
+        return $this->access_token_ys_key . static::getYsConfig('appKey');
     }
 
     public function refreshSelfAccessToken()
     {
         $params = [
-            'client_id'     => self::getAppConfig('client_id'),
-            'client_secret' => self::getAppConfig('client_secret'),
+            'client_id'     => static::getHikConfig('client_id'),
+            'client_secret' => static::getHikConfig('client_secret'),
             'grant_type'    => 'client_credentials',
         ];
 
@@ -441,8 +442,8 @@ trait Client
     public function refreshYsAccessToken()
     {
         $params = [
-            'appKey'    => self::getYsConfig('appKey'),
-            'appSecret' => self::getYsConfig('appSecret')
+            'appKey'    => static::getYsConfig('appKey'),
+            'appSecret' => static::getYsConfig('appSecret')
         ];
         $options = [
             'headers' => ['Content-Type'=>'application/x-www-form-urlencoded'],
@@ -458,7 +459,7 @@ trait Client
         $header = [
             'Accept'                => '*/*',
             'Content-Type'          => 'application/json',
-            'X-Ca-Key'              => trim(self::getIsConfig('appKey')),
+            'X-Ca-Key'              => trim(static::getIsConfig('appKey')),
             'X-Ca-Signature'        => $this->getSignResult($endpoint),
             'X-Ca-Timestamp'        => $this->geTimeStamp(),
             'X-Ca-Signature-Headers'=> 'x-ca-key,x-ca-timestamp',
@@ -478,7 +479,7 @@ trait Client
         $header = [
             'Accept'                => '*/*',
             'Content-Type'          => 'application/json',
-            'X-Ca-Key'              => trim(self::getIsConfig('appKey')),
+            'X-Ca-Key'              => trim(static::getIsConfig('appKey')),
             'X-Ca-Signature'        => $this->getSignResult($endpoint),
             'X-Ca-Timestamp'        => $this->geTimeStamp(),
             'X-Ca-Signature-Headers'=> 'x-ca-key,x-ca-timestamp',
@@ -503,7 +504,7 @@ trait Client
      */
     public function getSignResult($url,$httpMethod='post') {
         $signString = $this->generateSignString($url,$httpMethod);
-        $sign       = hash_hmac('sha256',$signString, self::getIsConfig('appSecret'),true);
+        $sign       = hash_hmac('sha256',$signString, static::getIsConfig('appSecret'),true);
         $result     = base64_encode($sign);
         return $result;
     }
@@ -522,7 +523,7 @@ trait Client
         $string  = strtoupper($httpMethod)  . $enter;
         $string .= "*/*"                    . $enter;
         $string .= "application/json"       . $enter;
-        $string .= "x-ca-key:"              . trim(self::getIsConfig('appKey')).$enter;
+        $string .= "x-ca-key:"              . trim(static::getIsConfig('appKey')).$enter;
         $string .= "x-ca-timestamp:"        . $this->geTimeStamp().$enter;
         $string .= $url;
         return $string;

@@ -20,7 +20,7 @@
     use Imactool\Hikcloud\Core\ContainerBase;
     use Imactool\Hikcloud\Device\DeviceProvider;
     use Imactool\Hikcloud\FaceDB\FaceDBProvider;
-    use Imactool\Hikcloud\Http\Client;
+    use Imactool\Hikcloud\Http\ClientHttp;
     use Imactool\Hikcloud\Msg\MsgProvider;
     use Imactool\Hikcloud\Person\PersonProvider;
     use Imactool\Hikcloud\Property\PropertyProvider;
@@ -46,6 +46,7 @@
      */
     class HikCloud extends ContainerBase
 	{
+        use ClientHttp;
 
         private static $config;
 
@@ -72,7 +73,7 @@
         public function __construct (array $config)
         {
             self::$config = $config;
-            Client::setAppConfig('config',$config);
+            self::setAppConfig('hikconfig',$config);
             parent::__construct();
         }
 

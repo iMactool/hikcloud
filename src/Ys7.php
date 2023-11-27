@@ -14,7 +14,7 @@
 	use Imactool\Hikcloud\Auth\AuthProvider;
     use Imactool\Hikcloud\Core\ContainerBase;
     use Imactool\Hikcloud\Device\DeviceProvider;
-    use Imactool\Hikcloud\Http\Client;
+    use Imactool\Hikcloud\Http\ClientHttp;
     use Imactool\Hikcloud\Live\LiveProvider;
     use Imactool\Hikcloud\Msg\MsgProvider;
     use Imactool\Hikcloud\Ptz\PtzProvider;
@@ -37,6 +37,7 @@
      */
     class Ys7 extends ContainerBase
 	{
+        use ClientHttp;
         private static $config;
 
         /**
@@ -56,7 +57,7 @@
         public function __construct (array $config)
         {
             self::$config = $config;
-            Client::setAppConfig('ysconfig',$config);
+            ClientHttp::setAppConfig('ysconfig',$config);
             parent::__construct();
         }
 
